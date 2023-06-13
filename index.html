@@ -26,7 +26,6 @@
       }
       .content-body {
         display: none;
-
       }
       .show-active {
         display: block;
@@ -43,7 +42,6 @@
           opacity: 1;
         }
       }
-
     </style>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -51,21 +49,16 @@
   <body>
     <div class="container">
       <div class="selector">
-        <div class="tab tab-active">
-          Shirts
-        </div>
-        <div class="tab">
-          Pants  
-        </div>
-        <div class="tab">
-          Shoes
-        </div>
-      </div class="content">
-        <div id= "Shirts" class="content-body show-by-default">
+        <div class="tab tab-active">Shirts</div>
+        <div class="tab">Pants</div>
+        <div class="tab">Shoes</div>
+      </div>
+      <div class="content">
+        <div id="Shirts" class="content-body show-by-default">
           <h4>Shirts</h4>
           <p>Our shirts are all of the highest quality</p>
         </div>
-        <div id= "Pants" class="content-body">
+        <div id="Pants" class="content-body">
           <h4>Pants</h4>
           <p>Pants can be custom tailored upon request</p>
         </div>
@@ -73,34 +66,36 @@
           <h4>Shoes</h4>
           <p>Shoes all US sized unless indicated otherwise</p>
         </div>
+      </div>
     </div>
     <script>
       //function to remove show-active dlass & add to clicked
       function setNewActive(el) {
         //select all .content-body
-      var contentBodies = document.getElementsByClassName('content-body')
-      //remove .show-active
-      for (var contentBody of contentBodies) {
-        contentBody.classList.remove('show-active');
+        var contentBodies = document.getElementsByClassName("content-body");
+        //remove .show-active
+        for (var contentBody of contentBodies) {
+          contentBody.classList.remove("show-active");
+        }
+        console.log(el.textContent);
+        // add .show-active (back ) to clicked
+        document
+          .getElementById(el.textContent.trim())
+          .classList.add("show-active");
+        var tabs = document.getElementsByClassName("tab");
+        for (var tab of tabs) {
+          tab.classList.remove("tab-active");
+        }
+        el.classList.add("tab-active");
       }
-      console.log(el.textContent);
-      // add .show-active (back ) to clicked
-      document.getElementById(el.textContent.trim()).classList.add('show-active')
-      var tabs = document.getElementsByClassName('tab');
-      for (var tab of tabs) {
-        tab.classList.remove('tab-active');
-      }
-      el.classList.add('tab-active');
-    }
-    
-    
+
       //select .tab class and loop through
-      var tabs = document.getElementsByClassName('tab');
+      var tabs = document.getElementsByClassName("tab");
       for (var tab of tabs) {
         // add a click listener to each tab
-        tab.addEventListener('click', function(e) {
+        tab.addEventListener("click", function (e) {
           setNewActive(e.currentTarget);
-        })
+        });
       }
     </script>
   </body>
